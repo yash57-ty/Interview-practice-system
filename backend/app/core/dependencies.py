@@ -15,6 +15,7 @@ def get_current_user(
     token: str = Depends(oauth2_scheme),
     db: Session = Depends(get_db)
 ):
+    print("helolo")
     print("TOKEN =", token)
     email = verify_access_token(token)
     user = get_user_by_email(

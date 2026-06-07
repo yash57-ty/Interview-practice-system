@@ -9,6 +9,7 @@ from app.roadmap.service import (
     generate_roadmap,
     get_my_roadmaps
 )
+from .repository import get_user_subject_roadmaps
 
 router = APIRouter(
     prefix="/roadmaps",
@@ -35,4 +36,16 @@ def get_roadmaps(
     return get_my_roadmaps(
         db,
         current_user
+    )
+
+@router.get("/{subject_id}")
+def get_subject_roadmap(
+    subject_id: int,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    return get_user_subject_roadmaps(
+        db,
+        current_user.id,
+        subject_id
     )

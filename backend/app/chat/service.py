@@ -29,7 +29,6 @@ def ask_gemini_and_save(
     """
     response = model.generate_content(prompt)
 
-
     create_chat_message(
         db,
         current_user.id,

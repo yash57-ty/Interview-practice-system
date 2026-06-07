@@ -25,3 +25,25 @@ def get_user_roadmaps(
         .filter(Roadmap.user_id == user_id)
         .all()
     )
+
+def delete_user_roadmaps(
+    db,
+    user_id,
+    subject_id
+):
+    db.query(Roadmap).filter(
+        Roadmap.user_id == user_id,
+        Roadmap.subject_id == subject_id
+    ).delete()
+
+    db.commit()
+
+def get_user_subject_roadmaps(
+    db,
+    user_id,
+    subject_id
+):
+    return db.query(Roadmap).filter(
+        Roadmap.user_id == user_id,
+        Roadmap.subject_id == subject_id
+    ).all()
