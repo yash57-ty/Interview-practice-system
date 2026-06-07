@@ -29,39 +29,3 @@ def get_me(
     current_user = Depends(get_current_user)
 ):
     return current_user
-
-@router.get("/test")
-async def test(request: Request):
-    return dict(request.headers)
-
-@router.get("/test2")
-def test2(
-    token: str = Depends(oauth2_scheme)
-):
-    return {"token": token}
-
-@router.get("/test3")
-def test3(
-    token: str = Depends(oauth2_scheme)
-):
-    return {
-        "email": verify_access_token(token)
-    }
-
-@router.get("/test4")
-def test4(
-    token: str = Depends(oauth2_scheme),
-    db: Session = Depends(get_db)
-):
-    email = verify_access_token(token)
-
-    user = get_user_by_email(
-        db,
-        email
-    )
-
-    return {
-        "email": email,
-        "user": str(user)
-    }
-

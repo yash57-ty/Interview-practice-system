@@ -3,7 +3,7 @@ from fastapi import APIRouter,Depends
 from app.core.dependencies import get_current_user
 from .service import get_user_progress,create_user_progress
 from sqlalchemy.orm import Session
-from app.core.dependencies import get_db
+from app.database.session import get_db
 
 
 router = APIRouter(

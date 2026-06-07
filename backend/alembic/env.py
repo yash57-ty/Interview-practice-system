@@ -22,6 +22,10 @@ from app.database.base import Base
 from app.models.user import User
 from app.models.subject import Subject
 from app.models.progress import Progress
+from app.models.topics import Topic
+from app.models.topicprogress import UserTopicProgress
+from app.models.roadmap import Roadmap
+from app.models.chat_msg import ChatMessage
 target_metadata = Base.metadata
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
